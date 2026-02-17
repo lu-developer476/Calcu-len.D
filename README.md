@@ -29,11 +29,9 @@ Luego abrí:
 > Tip: En local, si querés simular Vercel, podés usar `vercel dev` (opcional).
 
 ## Deploy en Vercel
-1. Subí este repo a GitHub.
-2. En Vercel: **New Project** → Import repo.
-3. Framework Preset: **Other** (o detectará Python automáticamente).
-4. No necesitás build command.
-5. Deploy.
+1. Subir el repositorio a GitHub
+2. Importar desde Vercel
+3. Deploy
 
 ### Rutas
 - `/` sirve `public/index.html`
