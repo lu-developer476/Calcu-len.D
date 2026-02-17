@@ -1,0 +1,203 @@
+:root{
+  --bg: #062a2a;
+  --panel: rgba(0, 255, 213, 0.08);
+  --panel2: rgba(0, 255, 213, 0.14);
+  --border: rgba(0, 255, 213, 0.22);
+  --text: #e7fffb;
+  --muted: rgba(231, 255, 251, 0.72);
+  --accent: #00ffd5;
+  --accent2: #49ffe1;
+  --danger: #ff4d6d;
+  --shadow: 0 18px 60px rgba(0,0,0,0.55);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(0,255,213,0.22), transparent 60%),
+    radial-gradient(900px 500px at 85% 30%, rgba(0,255,213,0.16), transparent 55%),
+    radial-gradient(900px 500px at 40% 85%, rgba(0,255,213,0.12), transparent 55%),
+    var(--bg);
+  color: var(--text);
+}
+
+a{color:var(--accent)}
+.container{
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 18px 42px;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.22);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  letter-spacing:0.2px;
+}
+.logo{
+  width:36px;height:36px;border-radius:12px;
+  border:1px solid var(--border);
+  background: linear-gradient(135deg, rgba(0,255,213,0.35), rgba(0,255,213,0.08));
+  display:grid;place-items:center;
+}
+.logo span{font-weight:800}
+
+.nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.pill{
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(0,255,213,0.06);
+  color: var(--text);
+  text-decoration:none;
+  font-size: 13px;
+}
+.pill:hover{background: rgba(0,255,213,0.12)}
+.h1{
+  margin: 26px 0 8px;
+  font-size: clamp(26px, 3.3vw, 40px);
+  line-height: 1.05;
+}
+.sub{
+  margin: 0 0 20px;
+  color: var(--muted);
+  max-width: 68ch;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 16px;
+}
+@media (max-width: 860px){
+  .grid{grid-template-columns:1fr}
+}
+
+.card{
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--panel2), rgba(0,0,0,0.18));
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.card h2{
+  margin: 0 0 10px;
+  font-size: 18px;
+  letter-spacing:0.2px;
+}
+.row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 520px){
+  .row{grid-template-columns:1fr}
+}
+
+label{
+  display:block;
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+input,select{
+  width:100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.28);
+  color: var(--text);
+  outline:none;
+}
+input:focus,select:focus{
+  border-color: rgba(0,255,213,0.6);
+  box-shadow: 0 0 0 4px rgba(0,255,213,0.14);
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top: 12px;
+}
+button{
+  border: 1px solid var(--border);
+  background: rgba(0,255,213,0.14);
+  color: var(--text);
+  padding: 11px 14px;
+  border-radius: 14px;
+  cursor:pointer;
+  font-weight: 600;
+}
+button:hover{background: rgba(0,255,213,0.22)}
+button.secondary{background: rgba(0,0,0,0.25)}
+button.secondary:hover{background: rgba(0,0,0,0.34)}
+button.danger{
+  border-color: rgba(255,77,109,0.45);
+  background: rgba(255,77,109,0.12);
+}
+button.danger:hover{background: rgba(255,77,109,0.18)}
+
+.kpi{
+  display:grid;
+  gap: 12px;
+}
+.kpi .box{
+  border: 1px solid var(--border);
+  background: rgba(0,255,213,0.06);
+  border-radius: 18px;
+  padding: 14px;
+}
+.big{
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+.muted{color: var(--muted)}
+.small{font-size: 12px;color: var(--muted)}
+.error{color: var(--danger)}
+hr{
+  border:none;
+  border-top: 1px solid rgba(0,255,213,0.16);
+  margin: 16px 0;
+}
+.footer{
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.badge{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border:1px solid var(--border);
+  background: rgba(0,255,213,0.06);
+}
+.dot{
+  width:8px;height:8px;border-radius:999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,255,213,0.18);
+}

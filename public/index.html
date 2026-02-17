@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ARS → USD | Calcu-lón (Money Edition)</title>
+  <meta name="description" content="Convertidor de pesos argentinos a dólar usando cotizaciones en tiempo real." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><span>$</span></div>
+        <div>
+          <div style="font-weight:800; font-size:16px;">Calcu-lón</div>
+          <div class="small">ARS → USD (Python)</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a class="pill" href="#convert">Convertir</a>
+        <a class="pill" href="#rate">Cotización</a>
+        <a class="pill" href="https://dolarapi.com/" target="_blank" rel="noreferrer">Fuente</a>
+        <a class="pill" href="https://vercel.com/docs/frameworks/backend/fastapi" target="_blank" rel="noreferrer">Deploy</a>
+      </nav>
+    </header>
+
+    <h1 class="h1">Peso → Dólar (sin humo).</h1>
+    <p class="sub">
+      Metés ARS, elegís el tipo de dólar, y te devuelvo USD usando cotización en vivo.
+      Si la API falla, podés cargar la cotización manual y seguir.
+    </p>
+
+    <section class="grid" id="convert">
+      <div class="card">
+        <h2>Conversión</h2>
+        <div class="row">
+          <div>
+            <label for="ars">Monto en ARS</label>
+            <input id="ars" type="number" inputmode="decimal" placeholder="Ej: 100000" min="0" step="0.01"/>
+          </div>
+          <div>
+            <label for="casa">Tipo de dólar</label>
+            <select id="casa">
+              <option value="oficial">Oficial</option>
+              <option value="blue">Blue</option>
+              <option value="bolsa">Bolsa (MEP)</option>
+              <option value="contadoconliqui">CCL</option>
+              <option value="cripto">Cripto</option>
+              <option value="tarjeta">Tarjeta</option>
+              <option value="mayorista">Mayorista</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:12px;">
+          <div>
+            <label for="lado">Valor a usar</label>
+            <select id="lado">
+              <option value="venta" selected>Venta (recomendado)</option>
+              <option value="compra">Compra</option>
+              <option value="promedio">Promedio</option>
+            </select>
+          </div>
+          <div>
+            <label for="manualRate">Cotización manual (opcional)</label>
+            <input id="manualRate" type="number" inputmode="decimal" placeholder="Ej: 1420" min="0" step="0.0001"/>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="btnConvert">Convertir</button>
+          <button id="btnSync" class="secondary">Traer cotización</button>
+          <button id="btnClear" class="danger">Limpiar</button>
+        </div>
+
+        <div id="msg" class="footer"></div>
+      </div>
+
+      <aside class="card" id="rate">
+        <h2>Resultado</h2>
+        <div class="kpi">
+          <div class="box">
+            <div class="small">USD estimados</div>
+            <div class="big" id="usd">$ —</div>
+            <div class="small muted" id="usdMeta">—</div>
+          </div>
+          <div class="box">
+            <div class="small">Cotización usada</div>
+            <div class="big" id="rateValue">$ —</div>
+            <div class="small muted" id="rateMeta">—</div>
+          </div>
+        </div>
+        <hr/>
+        <div class="footer">
+          <span class="badge"><span class="dot"></span> API: <span id="apiStatus">sin probar</span></span>
+          <div style="margin-top:10px;">
+            Consejo honesto: el “tipo de dólar” depende de tu contexto. Para comprar en la práctica, suele tener más sentido mirar <b>venta</b>.
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="footer" style="margin-top:22px;">
+      Hecho para deploy directo en Vercel (Python + FastAPI + static). Minimalista, rápido y verde agua como pediste.
+    </div>
+  </div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
