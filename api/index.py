@@ -44,7 +44,7 @@ Casa = Literal[
     "mayorista",
 ]
 
-TargetCurrency = Literal["USD", "BRL", "EUR", "CAD", "AUD", "CNY", "PEN", "GBP", "PYG"]
+TargetCurrency = Literal["USD", "BRL", "EUR", "CAD", "AUD", "CNY", "PEN", "GBP", "PYG", "MXN", "UAH", "RUB"]
 
 
 async def _get_json(url: str) -> Any:

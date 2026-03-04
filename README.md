@@ -7,8 +7,9 @@ Convertidor de ARS a múltiples monedas con UI estática y backend en FastAPI.
 - Backend en **FastAPI** (`api/index.py`) desplegable en Vercel.
 - Conversión ARS → USD con mercado local (`/api/convert`).
 - Conversión ARS → FX internacional (`/api/convert-fx`) para:
-  - BRL, EUR, CAD, AUD, CNY, PEN, GBP, PYG.
-- Selector de monedas con símbolo monetario (ej: €, £, ¥, R$, ₲) para mejor legibilidad.
+  - BRL, EUR (Italia y Francia), CAD, AUD, CNY, PEN, GBP, PYG, MXN, UAH, RUB.
+- Selector de monedas con símbolo monetario (ej: €, £, ¥, R$, ₲, MX$, ₴, ₽) para mejor legibilidad.
+- Favicon SVG custom con identidad de Calcu-len.D.
 
 ## Requisitos (local)
 - Python 3.11+ recomendado

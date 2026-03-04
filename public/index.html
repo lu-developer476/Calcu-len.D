@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ARS → Monedas | Calcu-len.D</title>
   <meta name="description" content="Convertidor de pesos argentinos a múltiples monedas usando cotizaciones en tiempo real." />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" href="/favicon.ico" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
@@ -19,8 +20,6 @@
         </div>
       </div>
       <nav class="nav">
-        <a class="pill" href="#convert">Convertir</a>
-        <a class="pill" href="#rate">Cotización</a>
         <a class="pill" href="https://dolarapi.com/" target="_blank" rel="noreferrer">Fuente ARS/USD</a>
         <a class="pill" href="https://www.exchangerate-api.com/docs/free" target="_blank" rel="noreferrer">Fuente FX</a>
       </nav>
@@ -28,7 +27,7 @@
 
     <h1 class="h1">Peso Argentino → Monedas</h1>
     <p class="sub">
-      Convertí ARS a USD, BRL, EUR, CAD, AUD, CNY, PEN, GBP y PYG.
+      Convertí ARS a USD, BRL, EUR, CAD, AUD, CNY, PEN, GBP, PYG, MXN, UAH y RUB.
       Para USD podés usar tipo de dólar y cotización manual; para el resto se usa FX global.
     </p>
 
@@ -45,13 +44,16 @@
             <select id="targetCurrency">
               <option value="USD" selected>USD ($) · Dólar estadounidense</option>
               <option value="BRL">BRL (R$) · Real brasileño</option>
-              <option value="EUR">EUR (€) · Euro</option>
+              <option value="EUR">EUR (€) · Euro (Italia y Francia)</option>
               <option value="CAD">CAD (C$) · Dólar canadiense</option>
               <option value="AUD">AUD (A$) · Dólar australiano</option>
               <option value="CNY">CNY (¥) · Yuan chino</option>
               <option value="PEN">PEN (S/) · Sol peruano</option>
               <option value="GBP">GBP (£) · Libra esterlina</option>
               <option value="PYG">PYG (₲) · Guaraní paraguayo</option>
+              <option value="MXN">MXN (MX$) · Peso mexicano</option>
+              <option value="UAH">UAH (₴) · Grivna ucraniana</option>
+              <option value="RUB">RUB (₽) · Rublo ruso</option>
             </select>
           </div>
         </div>

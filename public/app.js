@@ -10,6 +10,9 @@ const CURRENCY_META = {
   PEN: { code: "PEN", symbol: "S/", label: "Sol peruano" },
   GBP: { code: "GBP", symbol: "£", label: "Libra esterlina" },
   PYG: { code: "PYG", symbol: "₲", label: "Guaraní paraguayo" },
+  MXN: { code: "MXN", symbol: "MX$", label: "Peso mexicano" },
+  UAH: { code: "UAH", symbol: "₴", label: "Grivna ucraniana" },
+  RUB: { code: "RUB", symbol: "₽", label: "Rublo ruso" },
 };
 
 const fmtMoney = (n, currency = "$") => {

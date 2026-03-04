@@ -62,6 +62,20 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(data['target'], 'EUR')
         self.assertAlmostEqual(data['amount'], 95.0, places=6)
 
+
+    def test_convert_fx_for_mxn(self) -> None:
+        async def fake_fetch_fx_rates(base: str = 'ARS'):
+            return {'rates': {'MXN': 0.021}, 'time_last_update_utc': 'Fri, 01 Jan 2026 00:00:00 +0000'}
+
+        with patch('api.index._fetch_fx_rates', new=fake_fetch_fx_rates):
+            response = self.client.get('/api/convert-fx', params={'ars': 10000, 'target': 'MXN'})
+
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertTrue(data['ok'])
+        self.assertEqual(data['target'], 'MXN')
+        self.assertAlmostEqual(data['amount'], 210.0, places=6)
+
     def test_convert_fx_rejects_unknown_target(self) -> None:
         response = self.client.get('/api/convert-fx', params={'ars': 1000, 'target': 'XYZ'})
         self.assertEqual(response.status_code, 422)
