@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700;800&display=swap");
+
 :root{
   --bg: #062a2a;
   --panel: rgba(0, 255, 213, 0.08);
@@ -15,7 +17,8 @@
 html,body{height:100%}
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: "Rajdhani", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  letter-spacing: 0.2px;
   background:
     radial-gradient(1200px 600px at 20% 10%, rgba(0,255,213,0.22), transparent 60%),
     radial-gradient(900px 500px at 85% 30%, rgba(0,255,213,0.16), transparent 55%),
@@ -122,6 +125,7 @@ label{
   margin: 0 0 6px;
 }
 input,select{
+  font-family: inherit;
   width:100%;
   padding: 12px 12px;
   border-radius: 14px;
@@ -142,6 +146,7 @@ input:focus,select:focus{
   margin-top: 12px;
 }
 button{
+  font-family: inherit;
   border: 1px solid var(--border);
   background: rgba(0,255,213,0.14);
   color: var(--text);
@@ -200,4 +205,10 @@ hr{
   width:8px;height:8px;border-radius:999px;
   background: var(--accent);
   box-shadow: 0 0 0 3px rgba(0,255,213,0.18);
+}
+
+
+.text-cyber-gold{
+  color:#ffd84d;
+  font-weight:700;
 }

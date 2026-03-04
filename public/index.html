@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ARS → USD | Calcu-len (Dollar Edition)</title>
-  <meta name="description" content="Convertidor de pesos argentinos a dólar usando cotizaciones en tiempo real." />
-  <link rel="icon" href="/favicon.ico" />
+  <title>ARS → Monedas | Calcu-len.D</title>
+  <meta name="description" content="Convertidor de pesos argentinos a múltiples monedas usando cotizaciones en tiempo real." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" href="/favicon.ico" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
@@ -14,22 +15,20 @@
       <div class="brand">
         <div class="logo" aria-hidden="true"><span>$</span></div>
         <div>
-          <div style="font-weight:800; font-size:16px;">Calcu-len</div>
-          <div class="small">ARS → USD </div>
+          <div style="font-weight:800; font-size:16px;">Calcu-len.D</div>
+          <div class="small">ARS → Monedas</div>
         </div>
       </div>
       <nav class="nav">
-        <a class="pill" href="#convert">Convertir</a>
-        <a class="pill" href="#rate">Cotización</a>
-        <a class="pill" href="https://dolarapi.com/" target="_blank" rel="noreferrer">Fuente</a>
-        <a class="pill" href="https://vercel.com/docs/frameworks/backend/fastapi" target="_blank" rel="noreferrer">Deploy</a>
+        <a class="pill" href="https://dolarapi.com/" target="_blank" rel="noreferrer">Fuente ARS/USD</a>
+        <a class="pill" href="https://www.exchangerate-api.com/docs/free" target="_blank" rel="noreferrer">Fuente FX</a>
       </nav>
     </header>
 
-    <h1 class="h1">Peso Argentina → Dólar</h1>
+    <h1 class="h1">Peso Argentino → Monedas</h1>
     <p class="sub">
-      Metés ARS, elegís el tipo de dólar, y te devuelvo USD usando cotización en vivo.
-      Si la API falla, podés cargar la cotización manual y seguir.
+      Convertí ARS a USD, BRL, EUR, CAD, AUD, CNY, PEN, GBP, PYG, MXN, UAH y RUB.
+      Para USD podés usar tipo de dólar y cotización manual; para el resto se usa FX global.
     </p>
 
     <section class="grid" id="convert">
@@ -41,7 +40,27 @@
             <input id="ars" type="number" inputmode="decimal" placeholder="Ej: 100000" min="0" step="0.01"/>
           </div>
           <div>
-            <label for="casa">Tipo de dólar</label>
+            <label for="targetCurrency">Moneda destino</label>
+            <select id="targetCurrency">
+              <option value="USD" selected>USD ($) · Dólar estadounidense</option>
+              <option value="BRL">BRL (R$) · Real brasileño</option>
+              <option value="EUR">EUR (€) · Euro (Italia y Francia)</option>
+              <option value="CAD">CAD (C$) · Dólar canadiense</option>
+              <option value="AUD">AUD (A$) · Dólar australiano</option>
+              <option value="CNY">CNY (¥) · Yuan chino</option>
+              <option value="PEN">PEN (S/) · Sol peruano</option>
+              <option value="GBP">GBP (£) · Libra esterlina</option>
+              <option value="PYG">PYG (₲) · Guaraní paraguayo</option>
+              <option value="MXN">MXN (MX$) · Peso mexicano</option>
+              <option value="UAH">UAH (₴) · Grivna ucraniana</option>
+              <option value="RUB">RUB (₽) · Rublo ruso</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:12px;">
+          <div>
+            <label for="casa">Tipo de dólar (solo USD)</label>
             <select id="casa">
               <option value="oficial">Oficial</option>
               <option value="blue">Blue</option>
@@ -52,19 +71,19 @@
               <option value="mayorista">Mayorista</option>
             </select>
           </div>
-        </div>
-
-        <div class="row" style="margin-top:12px;">
           <div>
-            <label for="lado">Valor a usar</label>
+            <label for="lado">Valor a usar (solo USD)</label>
             <select id="lado">
               <option value="venta" selected>Venta (recomendado)</option>
               <option value="compra">Compra</option>
               <option value="promedio">Promedio</option>
             </select>
           </div>
+        </div>
+
+        <div class="row" style="margin-top:12px;">
           <div>
-            <label for="manualRate">Cotización manual (opcional)</label>
+            <label for="manualRate">Cotización manual ARS/USD (opcional)</label>
             <input id="manualRate" type="number" inputmode="decimal" placeholder="Ej: 1420" min="0" step="0.0001"/>
           </div>
         </div>
@@ -82,7 +101,7 @@
         <h2>Resultado</h2>
         <div class="kpi">
           <div class="box">
-            <div class="small">USD estimados</div>
+            <div class="small" id="resultLabel">Monto estimado</div>
             <div class="big" id="usd">$ —</div>
             <div class="small muted" id="usdMeta">—</div>
           </div>
@@ -96,15 +115,13 @@
         <div class="footer">
           <span class="badge"><span class="dot"></span> API: <span id="apiStatus">sin probar</span></span>
           <div style="margin-top:10px;">
-            Consejo honesto: el “tipo de dólar” depende de tu contexto. Para comprar en la práctica, suele tener más sentido mirar <b>venta</b>.
+            Consejo: para USD se usa mercado local (tipo de dólar). Para otras monedas se usa mercado FX internacional.
           </div>
         </div>
       </aside>
     </section>
 
-    <div class="footer" style="margin-top:22px;">
-      Hecho para deploy directo en Vercel (Python + FastAPI + static).
-    </div>
+    <div class="footer" id="appFooter" style="margin-top:22px; text-align:center;"></div>
   </div>
 
   <script src="/app.js" defer></script>

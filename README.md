@@ -1,11 +1,15 @@
-# Peso → Dólar (Python + FastAPI) — Deploy en Vercel
+# Calcu-len.D — ARS → Monedas (FastAPI + Vercel)
 
-Convertidor de ARS a USD usando cotizaciones en tiempo real (DolarApi.com).
+Convertidor de ARS a múltiples monedas con UI estática y backend en FastAPI.
 
 ## Qué incluye
-- Frontend estático (`public/`) con UI verde agua.
+- Frontend estático (`public/`) sin frameworks.
 - Backend en **FastAPI** (`api/index.py`) desplegable en Vercel.
-- Endpoint `/api/rate` para obtener cotizaciones y `/api/convert` para convertir.
+- Conversión ARS → USD con mercado local (`/api/convert`).
+- Conversión ARS → FX internacional (`/api/convert-fx`) para:
+  - BRL, EUR (Italia y Francia), CAD, AUD, CNY, PEN, GBP, PYG, MXN, UAH, RUB.
+- Selector de monedas con símbolo monetario (ej: €, £, ¥, R$, ₲, MX$, ₴, ₽) para mejor legibilidad.
+- Favicon SVG custom con identidad de Calcu-len.D.
 
 ## Requisitos (local)
 - Python 3.11+ recomendado
@@ -19,26 +23,25 @@ python -m venv .venv
 source .venv/bin/activate
 
 pip install -r requirements.txt
-uvicorn api.index:app --reload --port 8000
+uvicorn api.index:app --reload --host 0.0.0.0 --port 8000
 ```
 
 Luego abrí:
 - Frontend: http://localhost:8000 (si servís estáticos con otro server) o abrí `public/index.html`
-- API: http://localhost:8000/api/rate
+- API docs: http://localhost:8000/docs
 
-> Tip: En local, si querés simular Vercel, podés usar `vercel dev` (opcional).
+## Endpoints
+- `GET /api/health`
+- `GET /api/rate?casa=oficial|blue|...`
+- `GET /api/convert?ars=100000&casa=oficial&lado=venta`
+- `GET /api/convert-fx?ars=100000&target=EUR`
 
-## Deploy en Vercel
-1. Subir el repositorio a GitHub
-2. Importar desde Vercel
-3. Deploy
+## Tests
+```bash
+python -m unittest discover -s tests -v
+python -m compileall api tests
+```
 
-### Rutas
-- `/` sirve `public/index.html`
-- `/api/*` entra por `api/index.py` (ver `vercel.json`)
-
-## Fuente de datos
-- https://dolarapi.com (ver docs en `api/index.py`)
-
-## Licencia
-MIT (si querés, cambiála).
+## Fuentes de datos
+- ARS/USD local por mercado: https://dolarapi.com
+- FX internacional: https://open.er-api.com
