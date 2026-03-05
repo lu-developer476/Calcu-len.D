@@ -1,4 +1,4 @@
-# Calcu-len.D — ARS → Monedas (FastAPI + Vercel)
+# Calcu-len.D
 
 Convertidor de ARS a múltiples monedas con UI estática y backend en FastAPI.
 
